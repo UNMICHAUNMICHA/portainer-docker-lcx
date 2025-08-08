@@ -24,10 +24,24 @@
     -   หากใช้ **unprivileged container**, เพิ่มบรรทัดต่อไปนี้เพื่อเปิด cgroup และให้ Docker ทำงานได้:
         
         ```plaintext
-        features: nesting=1,keyctl=1
-        lxc.apparmor.profile: unconfined
-        lxc.cgroup.devices.allow: a
-        lxc.cap.drop:
+          GNU nano 8.4                                                              /etc/pve/lxc/101.conf                                                                       
+            arch: amd64
+            cores: 2
+            features: nesting=1,keyctl=1
+            hostname: docker
+            memory: 4096
+            net0: name=eth0,bridge=vmbr0,firewall=1,hwaddr=BC:24:11:F4:D6:46,ip=dhcp,type=veth
+            onboot: 1
+            ostype: ubuntu
+            rootfs: local-lvm:vm-101-disk-0,size=100G
+            swap: 4096
+            unprivileged: 0
+            lxc.apparmor.profile: unconfined
+            lxc.cgroup.devices.allow: a
+            lxc.cap.drop:
+            lxc.cgroup2.devices.allow: c 10:200 rwm
+            lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file
+
         
         ```
         
