@@ -24,13 +24,13 @@
     -   หากใช้ **unprivileged container**, เพิ่มบรรทัดต่อไปนี้เพื่อเปิด cgroup และให้ Docker ทำงานได้:
         
         ```plaintext
-            features: nesting=1,keyctl=1
-            unprivileged: 0
-            lxc.apparmor.profile: unconfined
-            lxc.cgroup.devices.allow: a
-            lxc.cap.drop:
-            lxc.cgroup2.devices.allow: c 10:200 rwm
-            lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file
+        features: nesting=1,keyctl=1
+        unprivileged: 0
+        lxc.apparmor.profile: unconfined
+        lxc.cgroup.devices.allow: a
+        lxc.cap.drop:
+        lxc.cgroup2.devices.allow: c 10:200 rwm
+        lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file
 
         
         ```
