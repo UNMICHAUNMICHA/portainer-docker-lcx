@@ -11,30 +11,7 @@
     
     -   สร้าง LXC Container โดยเลือกระบบปฏิบัติการ Debian (แนะนำ Debian 12) หรือ Ubuntu (แนะนำ 22.04/24.04) ใน Proxmox
     -   ตรวจสอบว่า LXC มีการตั้งค่าเน็ตเวิร์กและที่เก็บข้อมูลเพียงพอ
-2.  **ตั้งค่า Container Config**
-    
-    -   แก้ไขไฟล์ `/etc/pve/lxc/<CTID>.conf` (แทน `<CTID>` ด้วย ID ของ Container)
-    -   หากใช้ **privileged container**, เพิ่มบรรทัดต่อไปนี้เพื่อเปิดใช้งาน _nesting_ และ _keyctl_:
-        
-        ```plaintext
-        features: nesting=1,keyctl=1
-        
-        ```
-        
-    -   หากใช้ **unprivileged container**, เพิ่มบรรทัดต่อไปนี้เพื่อเปิด cgroup และให้ Docker ทำงานได้:
-        
-        ```plaintext
-        features: nesting=1,keyctl=1
-        unprivileged: 0
-        lxc.apparmor.profile: unconfined
-        lxc.cgroup.devices.allow: a
-        lxc.cap.drop:
-        lxc.cgroup2.devices.allow: c 10:200 rwm
-        lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file
 
-        
-        ```
-        
 3.  **รีสตาร์ท LXC Container**
     
     -   รีสตาร์ท Container เพื่อให้การตั้งค่ามีผล:
