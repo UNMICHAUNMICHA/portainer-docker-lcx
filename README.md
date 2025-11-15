@@ -20,39 +20,6 @@
         pct restart <CTID>
         
         ```
-    1) เปิด Nesting + Keyctl + FUSE
-
-ใน Proxmox GUI
-CT → Options → Features → ติ๊ก
-
-☑ Nesting
-
-☑ Keyctl
-
-☑ FUSE
-
-☑ Mount
-
-หรือใช้ CLI:
-
-pct set 100 -features nesting=1,keyctl=1,fuse=1
-
-2) แก้ config ของ LXC
-
-เปิดไฟล์:
-
-nano /etc/pve/lxc/100.conf
-
-
-เพิ่มด้านล่างสุด:
-
-lxc.apparmor.profile: unconfined
-lxc.cap.drop:
-lxc.cgroup2.devices.allow: a
-
-
-restart container:
-        
 
 ----------
 
