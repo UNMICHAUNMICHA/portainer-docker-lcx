@@ -110,10 +110,10 @@
               - "8000:8000"
               - "9443:9443"
             volumes:
-          - /var/run/docker.sock:/var/run/docker.sock
-          - portainer_data:/data
-          - /proc/sys/net/ipv4/ip_unprivileged_port_start:/proc/sys/net/ipv4/ip_unprivileged_port_start:ro
-        
+              - /var/run/docker.sock:/var/run/docker.sock
+              - portainer_data:/data
+              - /proc/sys/net/ipv4/ip_unprivileged_port_start:/proc/sys/net/ipv4/ip_unprivileged_port_start:ro
+            
         volumes:
           portainer_data:
         EOF
