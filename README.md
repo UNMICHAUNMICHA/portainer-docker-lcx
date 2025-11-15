@@ -98,13 +98,14 @@
         
         ```bash
         cat > docker-compose.yml <<EOF
-        version: "3.8"
         
         services:
           portainer:
             image: portainer/portainer-ce:latest
             container_name: portainer
             restart: always
+            environment:
+              - DOCKER_MIN_API_VERSION=1.24
             ports:
               - "8000:8000"
               - "9443:9443"
